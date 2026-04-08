@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <h1>Articles</h1>
-    <ul>
-      <li v-for="article in articles" :key="article.id">
-        {{ article.title }}
-      </li>
-    </ul>
+  <div class="p-4">
+    <h1 class="font-bold mb-8">Articles</h1>
+    <template v-for="article in articles">
+        <p class="font-bold">{{ article.title }}</p>
+        <div class="max-w-[50ch]" v-html="article.description"></div>
+    </template>
   </div>
 </template>
 
@@ -14,6 +13,6 @@ const { fetchDocs } = useApi()
 
 const { data } = await useAsyncData('articles', () => fetchDocs('articles'))
 
-const articles = computed(() => (data.value as { docs: { id: string; title: string }[] })?.docs ?? [])
+const articles = computed(() => (data.value as { docs: { id: string; title: string; description: string }[] })?.docs ?? [])
 console.log('articles:', articles.value)
 </script>
