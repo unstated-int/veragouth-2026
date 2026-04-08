@@ -21,13 +21,13 @@ export default buildConfig({
   },
   collections: [Users, Media, Articles],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.VX_PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: process.env.VX_DATABASE_URL || '',
     },
     push: true,
   }),

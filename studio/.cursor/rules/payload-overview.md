@@ -52,12 +52,12 @@ export default buildConfig({
   },
   collections: [Users, Media],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET,
+  secret: process.env.VX_PAYLOAD_SECRET,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URL,
+    url: process.env.VX_DATABASE_URL,
   }),
 })
 ```
